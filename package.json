@@ -1,7 +1,7 @@
 {
   "name": "puppeteer-site-infrastructure-tests",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test framework that allows analysts/marketers to specify site infrastructure regression tests for dev",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -13,5 +13,6 @@
     "cucumber": "cucumber-js ./features -r ./steps"
   },
   "author": "Jan Exner",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "repository": "github:janexner/puppeteer-site-infrastructure-tests"
 }
