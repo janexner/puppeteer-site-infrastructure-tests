@@ -79,7 +79,7 @@ Then(/^(?:MCID|ECID|Experience Cloud ID Service) is present$/, function() {
     return this.page.evaluate("(typeof Visitor === 'function')");
 });
 Then(/^(?:MCID|ECID|Experience Cloud ID Service) version is \"(.*)\" or later$/, function(targetVersion) {
-    const snippet = "if ('undefined' !== typeof Visitor) { if ('undefined' !== typeof Visitor.version) { return Visitor.version; } else { for (vv in s_c_il) { var nvv = s_c_il[vv]; if (typeof nvv._c !== 'undefined' && nvv._c == 'Visitor') { return nvv.version; } } } return 'unavailable' } else { return 'unavailable' }";
+    const snippet = "var result = 'unavailable'; if ('undefined' !== typeof Visitor) { if ('undefined' !== typeof Visitor.version) { result = Visitor.version; } else { for (vv in s_c_il) { var nvv = s_c_il[vv]; if (typeof nvv._c !== 'undefined' && nvv._c == 'Visitor') { result = nvv.version; break;} } } }; result;";
     return this.page.evaluate(snippet).then(function(ecidVersion) {
         const cv = compareVersion(ecidVersion, targetVersion);
         if (0 === cv || 1 == cv) {
@@ -90,7 +90,7 @@ Then(/^(?:MCID|ECID|Experience Cloud ID Service) version is \"(.*)\" or later$/,
     });
 });
 Then(/^(?:MCID|ECID|Experience Cloud ID Service) version is below \"(.*)\"$/, function (targetVersion) {
-    const snippet = "if ('undefined' !== typeof Visitor) { if ('undefined' !== typeof Visitor.version) { return Visitor.version; } else { for (vv in s_c_il) { var nvv = s_c_il[vv]; if (typeof nvv._c !== 'undefined' && nvv._c == 'Visitor') { return nvv.version; } } } return 'unavailable' } else { return 'unavailable' }";
+    const snippet = "var result = 'unavailable'; if ('undefined' !== typeof Visitor) { if ('undefined' !== typeof Visitor.version) { result = Visitor.version; } else { for (vv in s_c_il) { var nvv = s_c_il[vv]; if (typeof nvv._c !== 'undefined' && nvv._c == 'Visitor') { result = nvv.version; break;} } } }; result;";
     return this.page.evaluate(snippet).then(function(ecidVersion) {
         const cv = compareVersion(ecidVersion, targetVersion);
         if (-1 == cv) {
