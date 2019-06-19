@@ -1,0 +1,50 @@
+#Author: jan.exner@gmx.net
+#Description: this feature focuses on a specific thing across pages, a somewhat 'horizontal' feature, so to speak
+
+@analytics
+Feature: Launch is present in all templates
+  As an analytics team
+  I want all pages to contain Launch
+  so I can use it to manage my tracking
+
+  @trackingtools
+  Scenario: The home page loads and contains Launch
+    Given the page "https://www.jan-exner.de/" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"
+
+	@trackingtools
+  Scenario: The astro photos page loads and contains Launch
+    Given the page "https://www.jan-exner.de/astro/" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"
+
+  @trackingtools
+  Scenario: The blog overview page loads and contains Launch
+    Given the page "https://www.jan-exner.de/berichte/" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"
+
+  @trackingtools
+  Scenario: The photos page loads and contains Launch
+    Given the page "https://www.jan-exner.de/photos/" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"
+
+	@trackingtools
+  Scenario: The about page loads and contains Launch
+    Given the page "https://www.jan-exner.de/about/" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"
+
+  @trackingtools
+  Scenario: The blog article page loads and contains Launch
+    Given the page "https://www.jan-exner.de/berichte/20170713" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"
+
+  @trackingtools
+  Scenario: The search results page loads and contains Launch
+    Given the page "https://www.jan-exner.de/search/?q=abc" is loaded
+	Then Launch is present
+	And the Launch property is called "jan-exner.de"

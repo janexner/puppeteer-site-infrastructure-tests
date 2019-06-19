@@ -1,0 +1,17 @@
+{
+  "name": "puppeteer-site-infrastructure-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cucumber": "^5.1.0",
+    "puppeteer": "^1.17.0"
+  },
+  "scripts": {
+    "test": "cucumber-js ./features -r ./steps",
+    "cucumber": "cucumber-js ./features -r ./steps"
+  },
+  "author": "Jan Exner",
+  "license": "Apache-2.0"
+}
