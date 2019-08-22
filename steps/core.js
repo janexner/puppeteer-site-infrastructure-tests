@@ -52,6 +52,9 @@ Then(/^the \"(.*)\" data layer element is (\d+)$/, function(dataLayerElementName
 Then(/^there is a data layer element called \"(.*)\"$/, function(elementName) {
     return this.page.evaluate("('undefined' !== typeof " + elementName + ")");
 });
+Then(/^the \"(.*)\" data layer element exists$/, function(elementName) {
+    return this.page.evaluate("('undefined' !== typeof " + elementName + ")");
+});
 
 // DOM tests
 

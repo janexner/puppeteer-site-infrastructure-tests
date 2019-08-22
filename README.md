@@ -91,6 +91,12 @@ Causes the framework to test whether there is a data layer element with the name
 
 Example: `there is a data layer element called "digitalData.page.pageInfo.pageName"`
 
+Example: `the data layer element "digitalData.page.pageInfo.pageName" exists`
+
+*Note: both phrases test the exact same thing*
+
+*Note: this can be used to test the presence of any Javascript variable*
+
 #### `the "<name>" data layer element is "<value>"`
 
 Causes the framework to compare the value of the data element with the value given.
