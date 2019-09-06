@@ -2,6 +2,7 @@
 
 const { Before, Given, When, Then, After, setDefaultTimeout } = require('cucumber');
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 setDefaultTimeout(1000 * 30); // 30s timeout for loading pages
 
@@ -10,6 +11,13 @@ Before(async function() {
     const page = await browser.newPage();
     this.browser = browser;
     this.page = page;
+    // Check if folder exists before writing files there
+    const dataDirectory = './timing/';
+    if (!fs.existsSync(dataDirectory)) {
+        fs.mkdirSync(dataDirectory);
+    }
+    var logStream = fs.createWriteStream(dataDirectory + 'timings.csv', {'flags': 'a'});
+    this.logStream = logStream;
 });
 
 After(async function() {
@@ -17,7 +25,10 @@ After(async function() {
     if (this.browser) {
         await this.browser.close();
     }
-    // Cleanup DB
+    // Cleanup write stream for logger
+    if (this.logStream) {
+        await this.logStream.close();
+    }
 });
 
 Given(/^the page \"(.*)\" is loaded$/, function (pageURL) {
@@ -192,7 +203,24 @@ Then(/^Tealium IQ is present$/, function() {
     return this.page.evaluate("(typeof utag === 'object')");
 });
 
+Then(/^log Browser Performance Timing$/, function() {
+    var someFn = function (ls, pa, pu) {
+        return (function () {
+            pa.evaluate("JSON.stringify(performance.timing)").then(function (res) {
+                ls.write("" + pu + ": " + res + "\n");
+            }, function (val) {
+                // nothing to do here
+            });
+        });
+    }
+    var run = someFn(this.logStream, this.page, this.page.url());
+    run();
+    return true;
+});
+
 // helpers
+
+
 
 function compareVersion(v1, v2) {
     if (typeof v1 !== 'string') return false;
