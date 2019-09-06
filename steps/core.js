@@ -63,6 +63,9 @@ Then(/^the \"(.*)\" data layer element is (\d+)$/, function(dataLayerElementName
 Then(/^there is a data layer element called \"(.*)\"$/, function(elementName) {
     return this.page.evaluate("('undefined' !== typeof " + elementName + ")");
 });
+Then(/^the \"(.*)\" data layer element exists$/, function(elementName) {
+    return this.page.evaluate("('undefined' !== typeof " + elementName + ")");
+});
 
 // DOM tests
 
@@ -137,7 +140,7 @@ Then(/^(?:AA|Adobe Analytics) version is \"(.*)\" or later$/, function(targetVer
 });
 
 Then(/^(?:AT|Adobe Target) is present$/, function() {
-    return this.page.evaluate("(('undefined' !== adobe && adobe && 'undefined' !== adobe.target && adobe.target) || (typeof TNT == 'object'))");
+    return this.page.evaluate("(('undefined' !== typeof adobe && adobe && 'undefined' !== typeof adobe.target && adobe.target) || (typeof TNT == 'object'))");
 });
 Then(/^(?:AT|Adobe Target) lib type is \"(.*)\"$/, function(libType) {
     const snippet = "(typeof mboxVersion !== 'undefined' ) ? 'legacy' : (typeof adobe !== 'undefined' && typeof adobe.target !== 'undefined' && typeof adobe.target.VERSION !== 'undefined') ? 'at.js' : 'none';";
