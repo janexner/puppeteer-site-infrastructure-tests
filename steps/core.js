@@ -139,6 +139,11 @@ Then(/^(?:AA|Adobe Analytics) version is \"(.*)\" or later$/, function(targetVer
     });
 });
 
+Then(/^latest (?:AA|Adobe Analytics) tracking call contains key \"(.*)\" with value \"(.*)\"$/, function(key, value) {
+    const snippet = "var entryList = performance.getEntriesByType('resource');var result = false;for (var i = entryList.length - 1; i > 0; i--) {if ('undefined' !== typeof entryList[i].name && entryList[i].name.indexOf('/b/ss/') >= 0) {var keys = entryList[i].name.split('&');for (var i = keys.length - 1; i > 0; i--) {var tmp = keys[i].split('=');if ('" + key + "' === tmp[0]) {if ('" + value + "' === decodeURIComponent(tmp[1])) {result = true;}break;}}}} result;";
+    return this.page.evaluate(snippet);
+});
+
 Then(/^(?:AT|Adobe Target) is present$/, function() {
     return this.page.evaluate("(('undefined' !== typeof adobe && adobe && 'undefined' !== typeof adobe.target && adobe.target) || (typeof TNT == 'object'))");
 });

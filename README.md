@@ -223,6 +223,12 @@ Example: `an Adobe Analytics call has been sent for report suite "jexnerprod"`
 
 *Note that the two examples are equivalent and will result in the exact same test.*
 
+#### `latest AA|Adobe Analytics tracking call contains key "<key>" with value "<value>"`
+
+Causes the framework to check the latest Adobe Analytics tracking call for a specific key (or "variable") and test that the value is correct.
+
+Example: `latest AA|Adobe Analytics tracking call contains key "v3" with value "default"`
+
 #### `AT|Adobe Target is present`
 
 Causes the framework to test whether Target has been loaded.
@@ -253,7 +259,7 @@ Example: `Adobe Target lib type is "at.js"`
 
 *Note that the two examples are equivalent and will result in the exact same test.*
 
-#### `an AT|Adobe Target mbox named "<name>" exists `
+#### `an AT|Adobe Target mbox named "<name>" exists`
 
 Causes the framework to test whether a Target mbox of the given name exists on the page.
 

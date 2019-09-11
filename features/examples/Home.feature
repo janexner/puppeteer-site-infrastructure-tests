@@ -14,6 +14,7 @@ Feature: Tracking infrastructure on the home page is ok
     Then there is a data layer element called "digitalData.page.pageInfo.language"
     And the "digitalData.page.pageInfo.pageName" data layer element is "Home"
     And the snippet "window.jan" evaluates to true
+    And latest AA tracking call contains key "v3" with value "default"
 
   @trackingtools
   Scenario: The home page loads and contains Launch
