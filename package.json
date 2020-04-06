@@ -1,12 +1,12 @@
 {
   "name": "puppeteer-site-infrastructure-tests",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test framework that allows analysts/marketers to specify site infrastructure regression tests for dev",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "cucumber": "^5.1.0",
-    "puppeteer": "^1.18.1"
+    "puppeteer": "^1.20.0"
   },
   "scripts": {
     "test": "cucumber-js ./features -r ./steps",
