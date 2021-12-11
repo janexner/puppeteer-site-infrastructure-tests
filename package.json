@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "cucumber": "^6.0.5",
+    "@cucumber/cucumber": "^8.0.0-rc.1",
     "puppeteer": "^13.0.0"
   },
   "scripts": {

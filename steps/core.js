@@ -1,6 +1,6 @@
 'use strict';
 
-const { Before, Given, When, Then, After, setDefaultTimeout } = require('cucumber');
+const { Before, Given, When, Then, After, setDefaultTimeout } = require('@cucumber/cucumber');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
@@ -140,7 +140,7 @@ Then(/^(?:AA|Adobe Analytics) version is \"(.*)\" or later$/, function(targetVer
 });
 
 Then(/^latest (?:AA|Adobe Analytics) tracking call contains key \"(.*)\" with value \"(.*)\"$/, function(key, value) {
-    const snippet = "var entryList = performance.getEntriesByType('resource');var result = false;for (var i = entryList.length - 1; i > 0; i--) {if ('undefined' !== typeof entryList[i].name && entryList[i].name.indexOf('/b/ss/') >= 0) {var keys = entryList[i].name.split('&');for (var i = keys.length - 1; i > 0; i--) {var tmp = keys[i].split('=');if ('" + key + "' === tmp[0]) {if ('" + value + "' === decodeURIComponent(tmp[1])) {result = true;}break;}}}} result;";
+    const snippet = "var entryList = performance.getEntriesByType('resource');var result = false;for (var i = entryList.length - 1; i > 0; i--) {if ('undefined' !== typeof entryList[i].name && entryList[i].name.indexOf('/b/ss/') >= 0) {var keys = entryList[i].name.split('&');for (var j = keys.length - 1; j > 0; j--) {var tmp = keys[j].split('=');if ('" + key + "' === tmp[0]) {if ('" + value + "' === decodeURIComponent(tmp[1])) {result = true;break;}}}}} result;";
     return this.page.evaluate(snippet);
 });
 
