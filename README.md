@@ -1,6 +1,6 @@
 # Site Infrastructure Tests
 
-[![Build Status](https://travis-ci.org/janexner/puppeteer-site-infrastructure-tests.svg?branch=master)](https://travis-ci.org/janexner/puppeteer-site-infrastructure-tests)
+[![Build Status](https://travis-ci.com/janexner/puppeteer-site-infrastructure-tests.svg?branch=master)](https://travis-ci.com/janexner/puppeteer-site-infrastructure-tests)
 
 This project contains code that you can use to build your own test suite.
 
