@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "@cucumber/cucumber": "^8.0.0-rc.1",
-    "puppeteer": "^13.0.0"
+    "puppeteer": "^22.11.2"
   },
   "scripts": {
     "test": "cucumber-js ./features -r ./steps",
